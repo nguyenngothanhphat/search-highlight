@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Highlight from "./components/Highlight";
 
 function App() {
+  const [highlight, setHighlight] = useState("");
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setHighlight(value);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input
+        type="text"
+        onChange={(e) => {
+          handleChange(e);
+        }}
+      />
+      <Highlight
+        text="the quick brown fox jumps over the lazy dog"
+        highlight={highlight}
+      />
     </div>
   );
 }
